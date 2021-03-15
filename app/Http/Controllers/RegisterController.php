@@ -63,13 +63,26 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function resend(Request $request)
+    {
+        $code = rand(1000, 9999);
+        session()->put('verification_code', $code);
+        return Redirect::back()->with(['email' => session()->get('email'), 'code' => session()->get('verification_code')]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function logout(Request $request)
     {
         session()->forget('name');
         session()->forget('email');
-        return view('login', ['name' => session()->get('name'), 'email' => session()->get('email')]);
-                
+        return redirect('/');
     }
+
+
 
     /**
      * Store a newly created resource in storage.

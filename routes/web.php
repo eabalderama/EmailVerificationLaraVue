@@ -24,4 +24,5 @@ Route::get('/apply', function () {
 
 Route::get('/submit', [RegisterController::class, 'create'])->name('submit');
 Route::post('/verify', [RegisterController::class, 'verify'])->name('verify');
+Route::get('/resend', [RegisterController::class, 'resend'])->name('resend');
 Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');

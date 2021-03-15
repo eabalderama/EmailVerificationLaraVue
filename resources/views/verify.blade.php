@@ -11,11 +11,11 @@
         @csrf
         <input type="text" class="form-control text-center fw-bold fs-4 text-uppercase" name="code" v-model="code" minlength="4" maxlength="4">
         <div class="d-flex flex-row justify-content-between mt-4">
-            <button class="rounded-pill px-4 py-2" style="color: #663399" @click="resendCode">RESEND NOW</button>
+            <a class="rounded-pill px-4 py-2" style="color: #663399" href="{{ route('resend') }}">RESEND NOW</a>
             <button class="rounded-pill px-4 py-2" style="color: white; background-color: #663399" @click="submitCode">SUBMIT CODE</button>
         </div>
     </form>
-    <p class="mt-5">Not your correct address? <a @click="updateEmail" href="#"><u>Update your email address</u></a></p>
+    <p class="mt-5">Not your correct address? <a href="#"><u>Update your email address</u></a></p>
 </div>
 
 <script>
@@ -37,8 +37,7 @@
                 console.log(this.code)
             },
             resendCode(e) {
-            },
-            updateEmail(){},
+            }
         },
         mounted() {
             console.log("Verification code is {{ $code }}")
